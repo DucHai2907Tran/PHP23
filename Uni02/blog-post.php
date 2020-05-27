@@ -1,3 +1,28 @@
+<?php 
+//THÔNG SỐ KẾT NÔI CSDL
+
+require_once('connection.php');
+
+
+
+// Load category
+$query_category = "SELECT * FROM categories";
+
+$result_cate = $conn->query($query_category);
+// echo "<pre>";
+// var_dump($result_cate);
+// echo "</pre>";
+$categories = array();
+
+
+	while($row = $result_cate->fetch_assoc()) {
+		$categories[] = $row;
+	}
+$id = $_GET['id'];
+$query_post = "SELECT p.*, c.name as 'cate', a.name FROM posts p LEFT JOIN categories c ON p.category_id = c.id LEFT JOIN authors a ON p.author_id = a.id WHERE p.id=".$id;
+$result_post = $conn->query($query_post);
+$post = $result_post->fetch_assoc();
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -33,99 +58,7 @@
 		<!-- Header -->
 		<header id="header">
 			<!-- Nav -->
-			<div id="nav">
-				<!-- Main Nav -->
-				<div id="nav-fixed">
-					<div class="container">
-						<!-- logo -->
-						<div class="nav-logo">
-							<a href="index.html" class="logo"><img src="./img/logo.png" alt=""></a>
-						</div>
-						<!-- /logo -->
-
-						<!-- nav -->
-						<ul class="nav-menu nav navbar-nav">
-							<li><a href="category.html">News</a></li>
-							<li><a href="category.html">Popular</a></li>
-							<li class="cat-1"><a href="category.html">Web Design</a></li>
-							<li class="cat-2"><a href="category.html">JavaScript</a></li>
-							<li class="cat-3"><a href="category.html">Css</a></li>
-							<li class="cat-4"><a href="category.html">Jquery</a></li>
-						</ul>
-						<!-- /nav -->
-
-						<!-- search & aside toggle -->
-						<div class="nav-btns">
-							<button class="aside-btn"><i class="fa fa-bars"></i></button>
-							<button class="search-btn"><i class="fa fa-search"></i></button>
-							<div class="search-form">
-								<input class="search-input" type="text" name="search" placeholder="Enter Your Search ...">
-								<button class="search-close"><i class="fa fa-times"></i></button>
-							</div>
-						</div>
-						<!-- /search & aside toggle -->
-					</div>
-				</div>
-				<!-- /Main Nav -->
-
-				<!-- Aside Nav -->
-				<div id="nav-aside">
-					<!-- nav -->
-					<div class="section-row">
-						<ul class="nav-aside-menu">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About Us</a></li>
-							<li><a href="#">Join Us</a></li>
-							<li><a href="#">Advertisement</a></li>
-							<li><a href="contact.html">Contacts</a></li>
-						</ul>
-					</div>
-					<!-- /nav -->
-
-					<!-- widget posts -->
-					<div class="section-row">
-						<h3>Recent Posts</h3>
-						<div class="post post-widget">
-							<a class="post-img" href="blog-post.html"><img src="./img/widget-2.jpg" alt=""></a>
-							<div class="post-body">
-								<h3 class="post-title"><a href="blog-post.html">Pagedraw UI Builder Turns Your Website Design Mockup Into Code Automatically</a></h3>
-							</div>
-						</div>
-
-						<div class="post post-widget">
-							<a class="post-img" href="blog-post.html"><img src="./img/widget-3.jpg" alt=""></a>
-							<div class="post-body">
-								<h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On The Backend Development Block!</a></h3>
-							</div>
-						</div>
-
-						<div class="post post-widget">
-							<a class="post-img" href="blog-post.html"><img src="./img/widget-4.jpg" alt=""></a>
-							<div class="post-body">
-								<h3 class="post-title"><a href="blog-post.html">Tell-A-Tool: Guide To Web Design And Development Tools</a></h3>
-							</div>
-						</div>
-					</div>
-					<!-- /widget posts -->
-
-					<!-- social links -->
-					<div class="section-row">
-						<h3>Follow us</h3>
-						<ul class="nav-aside-social">
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-						</ul>
-					</div>
-					<!-- /social links -->
-
-					<!-- aside nav close -->
-					<button class="nav-aside-close"><i class="fa fa-times"></i></button>
-					<!-- /aside nav close -->
-				</div>
-				<!-- Aside Nav -->
-			</div>
+			<?php 	require_once('MainNav.php'); ?>
 			<!-- /Nav -->
 			
 			<!-- Page Header -->
@@ -135,10 +68,10 @@
 					<div class="row">
 						<div class="col-md-10">
 							<div class="post-meta">
-								<a class="post-category cat-2" href="category.html">JavaScript</a>
-								<span class="post-date">March 27, 2018</span>
+								<a class="post-category cat-2" href="category.html"><?= $post['cate']?></a>
+								<span class="post-date"><?= $post['created_at']?></span>
 							</div>
-							<h1>Ask HN: Does Anybody Still Use JQuery?</h1>
+							<h1><?= $post['title']?></h1>
 						</div>
 					</div>
 				</div>
@@ -157,9 +90,10 @@
 					<div class="col-md-8">
 						<div class="section-row sticky-container">
 							<div class="main-post">
-								<h3>Lorem Ipsum: when, and when not to use it</h3>
-								<p>Do you like Cheese Whiz? Spray tan? Fake eyelashes? That's what is Lorem Ipsum to many—it rubs them the wrong way, all the way. It's unreal, uncanny, makes you wonder if something is wrong, it seems to seek your attention for all the wrong reasons. Usually, we prefer the real thing, wine without sulfur based preservatives, real butter, not margarine, and so we'd like our layouts and designs to be filled with real words, with thoughts that count, information that has value. </p>
-								<p>The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. But what about your daily bread? Design comps, layouts, wireframes—will your clients accept that you go about things the facile way? Authorities in our business will tell in no uncertain terms that Lorem Ipsum is that huge, huge no no to forswear forever. Not so fast, I'd say, there are some redeeming factors in favor of greeking text, as its use is merely the symptom of a worse problem to take into consideration.</p>
+								<h3><?= $post['title']?></h3>
+								<p><?= $post['description']?> </p>
+								<p><?= $post['contents']?></p>
+								<p><b><em>Đăng bởi : <?= $post['name']?></em></b></p>
 								<figure class="figure-img">
 									<img class="img-responsive" src="./img/post-4.jpg" alt="">
 									<figcaption>So Lorem Ipsum is bad (not necessarily)</figcaption>

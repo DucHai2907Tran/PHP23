@@ -57,6 +57,7 @@ while($row = $result_5posts_behind->fetch_assoc()) {
 	$posts5[] = $row;
 }
 
+
 $cate_name= $_GET['cate'];
 
 ?>

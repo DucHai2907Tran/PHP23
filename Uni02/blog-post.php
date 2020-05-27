@@ -22,6 +22,21 @@ $id = $_GET['id'];
 $query_post = "SELECT p.*, c.name as 'cate', a.name FROM posts p LEFT JOIN categories c ON p.category_id = c.id LEFT JOIN authors a ON p.author_id = a.id WHERE p.id=".$id;
 $result_post = $conn->query($query_post);
 $post = $result_post->fetch_assoc();
+
+
+//Câu lệnh truy vấn
+$query_5posts = "SELECT p.*, c.name as 'category' FROM posts p LEFT JOIN categories c ON p.category_id = c.id WHERE p.status =1 AND p.category_id=1 ORDER BY p.created_at desc limit 3,5;";
+//die($query_posts_behind);
+
+//Thực thi câu lệnh
+$result_5posts= $conn->query($query_5posts);
+
+//Tạo 1 mảng để chứa dữ liệu
+$posts5nho = array();
+
+while($row = $result_5posts->fetch_assoc()) {
+	$posts5nho[] = $row;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -262,34 +277,14 @@ $post = $result_post->fetch_assoc();
 							<div class="section-title">
 								<h2>Most Read</h2>
 							</div>
-
+							<?php foreach ($posts5nho as $post) {?>
 							<div class="post post-widget">
-								<a class="post-img" href="blog-post.html"><img src="./img/widget-1.jpg" alt=""></a>
+								<a class="post-img" href="blog-post.html"><img src="<?= $post['thumbnail']?>" alt=""></a>
 								<div class="post-body">
-									<h3 class="post-title"><a href="blog-post.html">Tell-A-Tool: Guide To Web Design And Development Tools</a></h3>
+									<h3 class="post-title"><a href="blog-post.php?id=<?=$post['id']?>"><?= $post['title']?></a></h3>
 								</div>
 							</div>
-
-							<div class="post post-widget">
-								<a class="post-img" href="blog-post.html"><img src="./img/widget-2.jpg" alt=""></a>
-								<div class="post-body">
-									<h3 class="post-title"><a href="blog-post.html">Pagedraw UI Builder Turns Your Website Design Mockup Into Code Automatically</a></h3>
-								</div>
-							</div>
-
-							<div class="post post-widget">
-								<a class="post-img" href="blog-post.html"><img src="./img/widget-3.jpg" alt=""></a>
-								<div class="post-body">
-									<h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On The Backend Development Block!</a></h3>
-								</div>
-							</div>
-
-							<div class="post post-widget">
-								<a class="post-img" href="blog-post.html"><img src="./img/widget-4.jpg" alt=""></a>
-								<div class="post-body">
-									<h3 class="post-title"><a href="blog-post.html">Tell-A-Tool: Guide To Web Design And Development Tools</a></h3>
-								</div>
-							</div>
+							<?php } ?>
 						</div>
 						<!-- /post widget -->
 

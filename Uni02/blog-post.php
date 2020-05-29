@@ -19,13 +19,13 @@ $categories = array();
 		$categories[] = $row;
 	}
 $id = $_GET['id'];
-$query_post = "SELECT p.*, c.name as 'cate', a.name FROM posts p LEFT JOIN categories c ON p.category_id = c.id LEFT JOIN authors a ON p.author_id = a.id WHERE p.id=".$id;
+$query_post = "SELECT p.*, c.title as 'cate', a.name FROM posts p LEFT JOIN categories c ON p.category_id = c.id LEFT JOIN authors a ON p.author_id = a.id WHERE p.id=".$id;
 $result_post = $conn->query($query_post);
 $post = $result_post->fetch_assoc();
 
 
 //Câu lệnh truy vấn
-$query_5posts = "SELECT p.*, c.name as 'category' FROM posts p LEFT JOIN categories c ON p.category_id = c.id WHERE p.status =1 AND p.category_id=1 ORDER BY p.created_at desc limit 3,5;";
+$query_5posts = "SELECT p.*, c.title as 'category' FROM posts p LEFT JOIN categories c ON p.category_id = c.id WHERE p.status =1  ORDER BY p.created_at desc limit 3,5;";
 //die($query_posts_behind);
 
 //Thực thi câu lệnh

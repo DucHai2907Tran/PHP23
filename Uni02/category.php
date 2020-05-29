@@ -28,7 +28,7 @@ if ($result_cate) {
 $id = $_GET['id'];
 
 //Câu lệnh truy vấn
-$query_posts_behind = "SELECT p.*, c.name as 'category' FROM posts p LEFT JOIN categories c ON p.category_id = c.id WHERE p.status =1 AND p.category_id=1 ORDER BY p.created_at desc limit 3;";
+$query_posts_behind = "SELECT p.*, c.title as 'category' FROM posts p LEFT JOIN categories c ON p.category_id = c.id WHERE p.status =1   ORDER BY p.created_at desc limit 3;";
 //die($query_posts_behind);
 
 //Thực thi câu lệnh
@@ -44,7 +44,7 @@ while($row = $result_posts_behind->fetch_assoc()) {
 $id = $_GET['id'];
 
 //Câu lệnh truy vấn
-$query_5posts_behind = "SELECT p.*, c.name as 'category' FROM posts p LEFT JOIN categories c ON p.category_id = c.id WHERE p.status =1 AND p.category_id=1 ORDER BY p.created_at desc limit 3,5;";
+$query_5posts_behind = "SELECT p.*, c.title as 'category' FROM posts p LEFT JOIN categories c ON p.category_id = c.id WHERE p.status =1  ORDER BY p.created_at desc limit 3,5;";
 //die($query_posts_behind);
 
 //Thực thi câu lệnh

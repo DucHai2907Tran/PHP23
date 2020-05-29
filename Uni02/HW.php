@@ -2,17 +2,14 @@
 //THÔNG SỐ KẾT NÔI CSDL
 
 require_once('connection.php');
-if($conn->connect_errno)
-	die($conn->connect_errno);
+
 
 
 // Load category
 $query_category = "SELECT * FROM categories";
 
 $result_cate = $conn->query($query_category);
-// echo "<pre>";
-// var_dump($result_cate);
-// echo "</pre>";
+
 $categories = array();
 
 

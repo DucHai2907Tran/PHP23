@@ -22,7 +22,7 @@
 								
 							?>
 
-							<li class="cat-<?=$i?>"><a href="category.php?id=<?= $cate['id'] ?>%cate=<?= $cate['name'] ?>"><?= $cate['name'] ?></a></li>
+							<li class="cat-<?=$i?>"><a href="category.php?id=<?= $cate['id'] ?>%cate=<?= $cate['title'] ?>"><?= $cate['title'] ?></a></li>
 							<?php
 							$i++;
 							if($i==5) $i=1;

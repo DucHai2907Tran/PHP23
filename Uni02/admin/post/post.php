@@ -26,7 +26,7 @@
     <div class="container">
     <h3 align="center">Zent - Education And Technology Group</h3>
     <h3 align="center">Post List</h3>
-    <a href="category_add.php" type="button" class="btn btn-primary">Thêm mới</a>
+    <a href="post_add.php" type="button" class="btn btn-primary">Thêm mới</a>
     <?php if(isset($_COOKIE['msg'])){ ?>
         <div class="alert alert-success">
           <strong>Thành công</strong> <?= $_COOKIE['msg']?>
@@ -49,7 +49,7 @@
           <th scope="row"><?= $post['id']?></th>
           <td><?= $post['title']?></td>
           <td><?= $post['description']?></td>
-          <td><img src="<?= $post['thumbnail']?>" alt="" width="250px" height="200px"></td>
+          <td><img src="../../img/<?= $post['thumbnail']?>" alt="" width="250px" height="200px"></td>
           <td>
             <a href="post_detail.php?id=<?= $post['id']?>" type="button" class="btn btn-default">Xem</a>
             <a href="post_edit.php?id=<?= $post['id']?>" type="button" class="btn btn-success">Sửa</a>

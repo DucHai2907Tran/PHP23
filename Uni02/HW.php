@@ -156,7 +156,7 @@ while($row = $result_posts_behind->fetch_assoc()) {
 							<!-- post -->
 							<div class="col-md-4">
 								<div class="post">
-									<a class="post-img" href="blog-post.html"><img src="<?php echo $post['thumbnail'] ?>" alt=""width = "400px" height = "300px"></a >
+									<a class="post-img" href="blog-post.html"><img src="img/<?php echo $post['thumbnail'] ?>" alt=""width = "400px" height = "300px"></a >
 									<div class="post-body">
 										<div class="post-meta">
 											<a class="post-category cat-1" href="category.html">Web Design</a>
@@ -187,7 +187,7 @@ while($row = $result_posts_behind->fetch_assoc()) {
 							?>
 							<div class="col-md-12">
 								<div class="post post-thumb">
-									<a class="post-img" href="blog-post.html"><img src="<?php echo $post['thumbnail'] ?>" alt=""></a>
+									<a class="post-img" href="blog-post.html"><img src="img/<?php echo $post['thumbnail'] ?>" alt=""></a>
 									<div class="post-body">
 										<div class="post-meta">
 											<a class="post-category cat-3" href="category.html">Jquery</a>
@@ -208,7 +208,7 @@ while($row = $result_posts_behind->fetch_assoc()) {
 							?>
 							<div class="col-md-6">
 								<div class="post">
-									<a class="post-img" href="blog-post.html"><img src="<?php echo $post['thumbnail'] ?> " alt="" width = "400px" height = "300px"></a>
+									<a class="post-img" href="blog-post.html"><img src="img/<?php echo $post['thumbnail'] ?> " alt="" width = "400px" height = "300px"></a>
 									<div class="post-body">
 										<div class="post-meta">
 											<a class="post-category cat-4" href="category.html">Css</a>

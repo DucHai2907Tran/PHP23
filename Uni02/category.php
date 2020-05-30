@@ -128,7 +128,7 @@ $cate_name= $_GET['cate'];
 							<!-- post -->
 							<div class="col-md-12">
 								<div class="post post-thumb">
-									<a class="post-img" href="blog-post.html"><img src="<?= $posts_behind_3posts['thumbnail']?>" alt="" width = "400px" height = "300px"></a>
+									<a class="post-img" href="blog-post.html"><img src="img/<?= $posts_behind_3posts['thumbnail']?>" alt="" width = "400px" height = "300px"></a>
 									<div class="post-body">
 										<div class="post-meta">
 											<a class="post-category cat-2" href="#"><?= $posts_behind_3posts['category']?></a>
@@ -143,7 +143,7 @@ $cate_name= $_GET['cate'];
 							<!-- post -->
 							<div class="col-md-6">
 								<div class="post">
-									<a class="post-img" href="blog-post.html"><img src="<?= $post['thumbnail']?>" alt=""></a>
+									<a class="post-img" href="blog-post.html"><img src="img/<?= $post['thumbnail']?>" alt=""></a>
 									<div class="post-body">
 										<div class="post-meta">
 											<a class="post-category cat-2" href="#"><?= $post['category']?></a>
@@ -174,7 +174,7 @@ $cate_name= $_GET['cate'];
 							<!-- post -->
 							<div class="col-md-12">
 								<div class="post post-row">
-									<a class="post-img" href="blog-post.html"><img src="<?= $post['thumbnail']?>" alt=""></a>
+									<a class="post-img" href="blog-post.html"><img src="img/<?= $post['thumbnail']?>" alt=""></a>
 									<div class="post-body">
 										<div class="post-meta">
 											<a class="post-category cat-2" href="#"><?= $post['category']?></a>

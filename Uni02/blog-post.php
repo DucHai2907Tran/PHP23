@@ -279,7 +279,7 @@ while($row = $result_5posts->fetch_assoc()) {
 							</div>
 							<?php foreach ($posts5nho as $post) {?>
 							<div class="post post-widget">
-								<a class="post-img" href="blog-post.html"><img src="<?= $post['thumbnail']?>" alt=""></a>
+								<a class="post-img" href="blog-post.html"><img src="img/<?= $post['thumbnail']?>" alt=""></a>
 								<div class="post-body">
 									<h3 class="post-title"><a href="blog-post.php?id=<?=$post['id']?>"><?= $post['title']?></a></h3>
 								</div>

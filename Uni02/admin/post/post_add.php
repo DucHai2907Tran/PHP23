@@ -1,3 +1,20 @@
+<?php 
+  require_once('../../connection.php');
+
+  //category
+  //Câu lệnh truy vấn
+  $query_category = "SELECT * FROM categories";
+
+  //Thực thi câu lệnh
+  $result_cate = $conn->query($query_category);
+
+  //Tạo ra một bảng chứa dữ liệu
+  $categories = array();
+
+  while ($row = $result_cate->fetch_assoc()) {
+    $categories[] = $row;
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,13 +33,13 @@
 <body>
     <div class="container">
     <h3 align="center">Zent - Education And Technology Group</h3>
-    <h3 align="center">Add New Category</h3>
+    <h3 align="center">Update Category</h3>
     <hr>
-        <?php if(isset($_COOKIE['msg'])){ ?>
+    <?php if (isset($_COOKIE['msg'])) { ?>
         <div class="alert alert-warning">
-          <strong>Thất bại</strong> <?= $_COOKIE['msg']?>
-        </div>
-        <?php } ?>
+          <strong>Thông báo</strong> <?= $_COOKIE['msg']?> 
+       </div>
+    <?php } ?>
         <form action="post_add_action.php" method="POST" role="form" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="">Title</label>
@@ -34,16 +51,23 @@
             </div>
             <div class="form-group">
                 <label for="">Contents</label>
-                <textarea type="text" class="form-control" id="" placeholder="" name="contents">
-                </textarea>
+                <textarea class="form-control" id="" placeholder="" name="contents" rows="8"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="">Category</label>
+                <select name="category_id" class="form-control">
+                    <?php foreach ($categories as $cate) { ?>
+                    <option value="<?= $cate['id'] ?>"><?= $cate['title'] ?></option>
+                    <?php } ?>
+            </select>
             </div>
             <div class="form-group">
                 <label for="">Thumbnail</label>
-                <input type="file" class="form-control" id="" placeholder="" name="thumbnail"><em>(Check để hiển thị bài viết)</em>
+                <input type="file" class="form-control" id="" placeholder="" name="thumbnail">
             </div>
-            <div class="form-group">
-                <label for="">Hiển thị bài viết</label>
-                <input type="checkbox" class="form-control" id="" placeholder="" value="1" name="status">
+             <div class="form-group">
+                <label for="">Hiện thị bài viết</label>
+                <input type="checkbox" id="" placeholder="" value="1" name="status"> <em>(Check để hiện thị bài viết)</em>
             </div>
             <button type="submit" class="btn btn-primary">Create</button>
         </form>
